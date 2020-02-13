@@ -622,6 +622,7 @@ h1, h2, h3, h4, h5,
 
 .btn-custom {
   text-transform: uppercase;
+  margin-top: 10px;
   color: #fff !important;
   background: #3f4046;
   padding: 16px 30px;
