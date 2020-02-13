@@ -117,9 +117,6 @@ h1, h2, h3, h4, h5,
     background: -webkit-linear-gradient(left, #c70039, #ff5733 70%);
     background: -o-linear-gradient(left, #c70039, #ff5733 70%);
     background: linear-gradient(to right, #c70039, #ff5733 70%); }
-    @media (min-width: 992px) {
-      .site-section-heading h2:after {
-        left: -20%; } }
   .site-section-heading h2.text-center:after {
     content: "";
     -webkit-transform: translateX(-50%);
