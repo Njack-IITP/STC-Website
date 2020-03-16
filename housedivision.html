@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ICTC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar py-3" role="banner">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-11 col-xl-2">
+                        <h1 class="mb-0"><a href="./techseason.html" class="text-white h2 mb-0">TECH<span
+                                    class="text-primary">SEASON</span></a></h1>
+                    </div>
+                    <div class="col-12 col-md-10 d-none d-xl-block">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                                <li><a href="./techseason.html#site-events">Season Events</a></li>
+                                <li><a href="https://docs.google.com/document/d/1K8PaABIOqdFSkbvkWgcCM-hP-LWoxV7wPsF1rK50pCY"
+                                        target="_blank">Rulebook</a></li>
+                                <li class="active"><a href="./housedivision.html">House Division</a></li>
+                                <li><a href="./leaderboard.html">Leaderboard</a></li>
+                                <li class="cta"><a href="./index.html">Back to ICTC</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a
+                            href="#" class="site-menu-toggle js-menu-toggle text-white"><span
+                                class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="site-section site-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <h1 class="d-block mb-4" data-aos="fade-up" data-aos-delay="100">House Division</h1>
+                        <span class="d-block mb-5 caption" data-aos="fade-up" data-aos-delay="300">Search your roll
+                            number or name</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+
+                <!-- <h3 data-aos="fade-up" data-aos-delay="100">Tech Season Leaderboard</h3> -->
+                <div id="leader-div" data-aos="fade-up" data-aos-delay="300">
+                    <p>Leaderboard loading...</p>
+                </div>
+
+                <script type="text/javascript">
+                    $.ajax({
+                        url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQaMsjQkiCqVDJ0MWlhzxV5rXhUZCQDu91KOTs03K48wuvihxQEY-oRVKJ7Ig-eZssrF4hr3aJbiwC5/pub?gid=653317739&single=true&output=csv',
+                        success: maketable,
+                        error: function () {
+                            $('#leader-div').html('<p>Leaderboard could not be fetched.</p>');
+                        }
+                    });
+
+                    function maketable(data) {
+
+                        var rows = data.split(/\r?\n|\r/);
+                        if (rows.length <= 1) {
+                            $('#leader-div').html('<p>Data could not be parsed.</p>');
+                            return;
+                        }
+
+                        var auriga = [];
+                        var pegasus = [];
+                        var cassiopeia = [];
+                        var draco = [];
+                        for (var i = 1; i < rows.length; i++) {
+                            var cells = rows[i].split(',');
+                            if (cells.length == 0) {
+                                $('#leader-div').html('<p>Data could not be parsed.</p>');
+                                return;
+                            }
+
+                            auriga.push({
+                                roll: cells[0],
+                                name: cells[1]
+                            })
+                            pegasus.push({
+                                roll: cells[2],
+                                name: cells[3]
+                            })
+                            cassiopeia.push({
+                                roll: cells[4],
+                                name: cells[5]
+                            })
+                            draco.push({
+                                roll: cells[6],
+                                name: cells[7]
+                            })
+                        }
+
+                        var table =
+                            '<table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
+
+                        for (var i = 0; i < auriga.length; i++) {
+                            table += '<tr>';
+                            table += '<td>' + auriga[i].roll + '</td>';
+                            table += '<td>' + auriga[i].name + '</td>';
+                            table += '<th scope="row">Auriga</th>';
+                            table += '</tr>';
+                        }
+                        for (var i = 0; i < pegasus.length; i++) {
+                            table += '<tr>';
+                            table += '<td>' + pegasus[i].roll + '</td>';
+                            table += '<td>' + pegasus[i].name + '</td>';
+                            table += '<th scope="row">Pegasus</th>';
+                            table += '</tr>';
+                        }
+                        for (var i = 0; i < cassiopeia.length; i++) {
+                            table += '<tr>';
+                            table += '<td>' + cassiopeia[i].roll + '</td>';
+                            table += '<td>' + cassiopeia[i].name + '</td>';
+                            table += '<th scope="row">Cassiopeia</th>';
+                            table += '</tr>';
+                        }
+                        for (var i = 0; i < draco.length; i++) {
+                            table += '<tr>';
+                            table += '<td>' + draco[i].roll + '</td>';
+                            table += '<td>' + draco[i].name + '</td>';
+                            table += '<th scope="row">Draco</th>';
+                            table += '</tr>';
+                        }
+                        table += '</tbody></table>';
+                        $('#leader-div').html(table);
+                    }
+                </script>
+
+            </div>
+        </div>
+
+
+
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-4">
+                        <h2 class="footer-heading text-uppercase mb-4">About IIT Patna</h2>
+                        <p>Indian Institute of Technology Patna is one of the new IITs established by an Act of the
+                            Indian Parliament
+                            on August 06, 2008.</p>
+                    </div>
+                    <div class="col-md-3 ml-auto">
+                        <h2 class="footer-heading text-uppercase mb-4">Quick Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.iitp.ac.in/" target="_blank">IIT Patna</a></li>
+                            <li><a href="https://www.iitp.ac.in/gymkhana/" target="_blank">Gymkhana IIT Patna</a></li>
+                            <li><a href="https://stc.iitp.ac.in/" target="_blank">Technical Council</a></li>
+                            <li><a href="https://stc.iitp.ac.in/techseason/" target="_blank">Tech Season</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="footer-heading text-uppercase mb-4">Connect with Us</h2>
+                        <p>
+                            <a href="https://www.facebook.com/stc.iitp/" class="p-2 pl-0" target="_blank"><span
+                                    class="icon-facebook"></span></a>
+                            <a href="mailto:technicalaffairs@iitp.ac.in" class="p-2" target="_blank"><span
+                                    class="icon-mail_outline"></span></a>
+                            <a href="tel:+91 7424904721" class="p-2"><span class="icon-phone2"
+                                    target="_blank"></span></a>
+                            <a href="#site-footer" class="p-2"><span class="icon-linkedin-square"
+                                    target="_blank"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12 text-center">
+                        <div class="border-top pt-5">
+                            <p>
+                                Copyright &copy; <script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | Gymkhana IIT Patna <a href="https://colorlib.com"
+                                    target="_blank"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/aos.js"></script>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

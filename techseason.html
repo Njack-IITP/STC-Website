@@ -18,8 +18,6 @@
 	<link rel="stylesheet" href="css/aos.css">
 
 	<link rel="stylesheet" href="css/style.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -45,11 +43,11 @@
 					<div class="col-12 col-md-10 d-none d-xl-block">
 						<nav class="site-navigation position-relative text-right" role="navigation">
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li><a href="./techseason.html#site-events">Season Events</a></li>
+								<li class="active"><a href="#site-events">Season Events</a></li>
 								<li><a href="https://docs.google.com/document/d/1K8PaABIOqdFSkbvkWgcCM-hP-LWoxV7wPsF1rK50pCY"
 										target="_blank">Rulebook</a></li>
 								<li><a href="./housedivision.html">House Division</a></li>
-								<li class="active"><a href="./leaderboard.html">Leaderboard</a></li>
+								<li><a href="./leaderboard.html">Leaderboard</a></li>
 								<li class="cta"><a href="./index.html">Back to ICTC</a></li>
 							</ul>
 						</nav>
@@ -61,84 +59,80 @@
 			</div>
 		</header>
 
-
 		<div class="site-section site-hero">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-md-10">
-						<h1 class="d-block mb-4" data-aos="fade-up" data-aos-delay="100">Tech Season Leaderboard</h1>
-						<span class="d-block mb-5 caption" data-aos="fade-up" data-aos-delay="300">Scroll down</span>
+						<!-- <span class="d-block mb-3 caption" data-aos="fade-up" data-aos-delay="100">Conference 2019</span> -->
+						<h1 class="d-block mb-4" data-aos="fade-up" data-aos-delay="200">Tech Season '20</h1>
+						<span class="d-block mb-5 caption" data-aos="fade-up" data-aos-delay="300">Feb to April</span>
+						<a href="#site-events" class="btn-custom" data-aos="fade-up"
+							data-aos-delay="400"><span>Events</span></a>
+						<a href="./housedivision.html" class="btn-custom" data-aos="fade-up"
+							data-aos-delay="400"><span>House
+								Division</span></a>
+						<a href="./leaderboard.html" class="btn-custom" data-aos="fade-up"
+							data-aos-delay="400"><span>Leaderboard</span></a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="site-section">
+		<div class="site-section" id="site-events">
 			<div class="container">
-
-				<div id="leader-div" data-aos="fade-up" data-aos-delay="300">
-					<p>Leaderboard loading...</p>
+				<div class="row mb-5">
+					<div class="col-lg-8" data-aos="fade-up">
+						<div class="site-section-heading">
+							<h2>Coming soon...</h2>
+						</div>
+					</div>
 				</div>
 
-				<script type="text/javascript">
-					$.ajax({
-						url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSlLneYIsvRTlSOMn-iKbuS11wV1_D_5MaAcY6dzlodIKf5qlTxwplScs7uYht9NI5_x_302DrkSdYJ/pub?gid=0&single=true&output=csv',
-						success: maketable,
-						error: function () {
-							$('#leader-div').html('<p>Leaderboard could not be fetched.</p>');
-						}
-					});
+				<!-- <div class="row align-items-stretch program">
 
-					function maketable(data) {
+          <div class="col-12 border-top border-bottom py-5" data-aos="fade" data-aos-delay="200">
+            <div class="row align-items-stretch">
+              <div class="col-md-3 text-white mb-3 mb-md-0"><span class="h4">12 February</span></div>
+              <div class="col-md-9">
+                <h2 class="text-white">Problem statements launched</h2>
+                <span>Chris Mathews</span>
+              </div>
+            </div>
+          </div>
 
-						var rows = data.split(/\r?\n|\r/);
-						if (rows.length <= 1) {
-							$('#leader-div').html('<p>Data could not be parsed.</p>');
-							return;
-						}
 
-						var sortedData = [];
-						for (var i = 1; i < rows.length; i++) {
-							var cells = rows[i].split(',');
-							if (cells.length == 0) {
-								$('#leader-div').html('<p>Data could not be parsed.</p>');
-								return;
-							}
-							sortedData.push({
-								event: cells[0],
-								auriga: cells[1].trim(),
-								pegasus: cells[2].trim(),
-								cassiopeia: cells[3].trim(),
-								draco: cells[4].trim()
-							});
-						}
-
-						var table =
-							'<div class="table-responsive"><table class=\"table table-hover table-borderless\""><thead class="table-dark"><tr"><th scope="col">Event</th><th scope="col">Auriga</th><th scope="col">Pegasus</th><th scope="col">Cassiopeia</th><th scope="col">Draco</th></tr></thead><tbody>';
-
-						for (var i = 0; i < sortedData.length; i++) {
-							table += '<tr>';
-							table += '<th scope="row">' + sortedData[i].event + '</td>';
-							table += '<td>' + sortedData[i].auriga + '</td>';
-							table += '<td>' + sortedData[i].pegasus + '</td>';
-							table += '<td>' + sortedData[i].cassiopeia + '</td>';
-							table += '<td>' + sortedData[i].draco + '</td>';
-							table += '</tr>';
-						}
-
-						table += '</tbody></table></div>';
-						$('#leader-div').html(table);
-					}
-				</script>
-
+        </div> -->
 			</div>
 		</div>
 
+		<!-- <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 ">
+            <div class="site-section-heading" data-aos="fade-up">
+              <h2>Sponsors</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+            <img src="images/logo_1.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="300">
+            <img src="images/logo_2.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="400">
+            <img src="images/logo_3.png" alt="Image" class="img-fluid">
+          </div>
+        </div>
 
-
-
-
-
+        <div class="row" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-12 text-center pt-5">
+            <a href="#" class="btn-custom" data-aos="fade-up" data-aos-delay="800"><span>Be a Sponsor</span></a>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
 		<footer class="site-footer">
 			<div class="container">
@@ -146,7 +140,8 @@
 					<div class="col-md-4">
 						<h2 class="footer-heading text-uppercase mb-4">About IIT Patna</h2>
 						<p>Indian Institute of Technology Patna is one of the new IITs established by an Act of the
-							Indian Parliament
+							Indian
+							Parliament
 							on August 06, 2008.</p>
 					</div>
 					<div class="col-md-3 ml-auto">
