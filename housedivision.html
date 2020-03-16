@@ -128,9 +128,10 @@
                             })
                         }
 
-                        var table =
-                            '<table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
+                        var table = '';
 
+                        table +=
+                            '<table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
                         for (var i = 0; i < auriga.length; i++) {
                             table += '<tr>';
                             table += '<td>' + auriga[i].roll + '</td>';
@@ -138,6 +139,8 @@
                             table += '<th scope="row">Auriga</th>';
                             table += '</tr>';
                         }
+                        table +=
+                            '</tbody></table><table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
                         for (var i = 0; i < pegasus.length; i++) {
                             table += '<tr>';
                             table += '<td>' + pegasus[i].roll + '</td>';
@@ -145,6 +148,8 @@
                             table += '<th scope="row">Pegasus</th>';
                             table += '</tr>';
                         }
+                        table +=
+                            '</tbody></table><table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
                         for (var i = 0; i < cassiopeia.length; i++) {
                             table += '<tr>';
                             table += '<td>' + cassiopeia[i].roll + '</td>';
@@ -152,6 +157,8 @@
                             table += '<th scope="row">Cassiopeia</th>';
                             table += '</tr>';
                         }
+                        table +=
+                            '</tbody></table><table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
                         for (var i = 0; i < draco.length; i++) {
                             table += '<tr>';
                             table += '<td>' + draco[i].roll + '</td>';
