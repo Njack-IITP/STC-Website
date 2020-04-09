@@ -185,7 +185,7 @@
                     }
 
                     var searchbox = document.querySelector('#searchbox');
-                    searchbox.addEventListener('keydown', reRenderTableToDom);
+                    searchbox.addEventListener('keyup', reRenderTableToDom);
 
                     function reRenderTableToDom() {
                         var inp = searchbox.value;
