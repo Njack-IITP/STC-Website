@@ -216,7 +216,7 @@
         function renderTableToDom(auriga, pegasus, cassiopeia, draco) {
             var table='';
             table +=
-                '<table class=\"table table-borderless table-hover\""><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
+                '<table class=\"table table-borderless table-hover\""><span>Select House</span><select id="houseOptions" onchange="renderHouseChange()" style="margin: 0 0 20px 0; width: 100%;"><option value="all" id="all">All</option><option value="auriga" id="auriga">Auriga</option><option value="pegasus" id="pegasus">Pegasus</option><option value="cassiopeia" id="cassiopeia">Cassiopeia</option><option value="draco" id="draco">Draco</option></select><thead><tr class="bg-primary"><th scope="col">Roll No.</th><th scope="col">Name</th><th scope="col">House</th></tr></thead><tbody>';
             for (var i = 0; i < auriga.length; i++) {
                 table += '<tr>';
                 table += '<td>' + auriga[i].roll + '</td>';
@@ -267,11 +267,15 @@
         }
 
         var searchbox = document.querySelector('#searchbox');
-        searchbox.addEventListener('keyup', debounce(reRenderTableToDom, 200));
+        searchbox.addEventListener('keyup', debounce(renderSearch, 200));
 
-        function reRenderTableToDom() {
+        function renderSearch() {
             var inp = searchbox.value;
             if(!inp.trim()) {
+                aurigaClone = auriga;
+                pegasusClone = pegasus;
+                cassiopeiaClone = cassiopeia;
+                dracoClone = draco;
                 renderTableToDom(auriga, pegasus, cassiopeia, draco);
                 return 0;
             }
@@ -314,6 +318,29 @@
             })
 
             renderTableToDom(aurigaClone, pegasusClone, cassiopeiaClone, dracoClone);
+        }
+
+        function renderHouseChange() {
+            var option = document.getElementById("houseOptions");
+            var optionValue = option.value;
+            console.log(optionValue);
+            if(optionValue == 'all') {
+                renderTableToDom(aurigaClone, pegasusClone, cassiopeiaClone, dracoClone);
+                document.getElementById('all').selected = true;
+            } else if (optionValue == 'auriga') {
+                renderTableToDom(auriga, [], [], []);
+                document.getElementById('auriga').selected = true;
+            } else if (optionValue == 'pegasus') {
+                renderTableToDom([], pegasus, [], []);
+                document.getElementById('pegasus').selected = true;
+            } else if (optionValue == 'cassiopeia') {
+                renderTableToDom([], [], cassiopeia, []);
+                document.getElementById('cassiopeia').selected = true;
+            } else if (optionValue == 'draco') {
+                renderTableToDom([], [], [], draco);
+                document.getElementById('draco').selected = true;
+            }
+            searchbox.value = "";
         }
 
     </script>
