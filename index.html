@@ -23,21 +23,11 @@
 		font-family: Nunito;
 	}
 
-	.top {
-		position: absolute;
-		top: 0;
-		width: 100%;
-		font-size: x-large;
-		font-family: Nunito;
-		text-align: center;
-	}
-
 	.middle {
 		position: absolute;
 		align-items: center;
 		text-align: center;
 		padding: 10px;
-		top: 200px;
 		font-size: 25px;
 		font-family: Nunito;
 	}
@@ -51,10 +41,19 @@
 		font-family: Nunito;
 	}
 
+	.topimg {
+		width: 80%;
+	}
+
 	@media only screen and (min-width: 768px) {
 		.desc {
 			padding: 100px;
 		}
+
+		.topimg {
+			width: 30%;
+		}
+
 	}
 
 	a:link,
@@ -86,10 +85,11 @@
 
 <body>
 	<div class="main">
-		<div class="top">
+		<!-- <div class="top">
 			<p>Students' Technical Council</p>
-		</div>
+		</div> -->
 		<div class="middle">
+			<img src="./techseason/images/stc_icon_tr.png" class='topimg'>
 			<h1>COMING SOON</h1>
 			<a href="./techseason/index.html"><b>Go to TECHSEASON</b></a>
 
