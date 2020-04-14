@@ -1,2 +1,2 @@
-# ICTCWebsite
-Intra College Tech Championship IIT Patna
+# STC WEBSITE
+Students' Technical Council, IIT Patna
